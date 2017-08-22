@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Rocoo">
 <meta property="og:description" content="前言 在開發 iOS 的時候，時常會需要測試 dev 及 production 的 API，每次更換 API 就要重新 run 就顯得不是那麼聰明，而且如果 QA 不在身邊的話，難道我只能利用 TestFlight 或是其他工具在 build 給他嗎？ 這長期下來消耗的時間也是很可觀的。  所以，我們可以利用 Deep link 的方式選擇自己想要 API ，只要文字夠複雜的話，就不用擔心使用者誤">
 <meta property="og:image" content="https://rocooshiang.github.io/2017/08/23/Deep-link-9/Deeplink.gif">
-<meta property="og:updated_time" content="2017-08-22T16:58:27.000Z">
+<meta property="og:updated_time" content="2017-08-22T17:07:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deep link">
 <meta name="twitter:description" content="前言 在開發 iOS 的時候，時常會需要測試 dev 及 production 的 API，每次更換 API 就要重新 run 就顯得不是那麼聰明，而且如果 QA 不在身邊的話，難道我只能利用 TestFlight 或是其他工具在 build 給他嗎？ 這長期下來消耗的時間也是很可觀的。  所以，我們可以利用 Deep link 的方式選擇自己想要 API ，只要文字夠複雜的話，就不用擔心使用者誤">
@@ -287,7 +287,7 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-23T00:58:27+08:00">
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-23T01:05:37+08:00">
                 2017-08-23
               </time>
             
@@ -347,15 +347,15 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p></p><h5> 在開發 iOS 的時候，時常會需要測試 dev 及 production 的 API，每次更換 API 就要重新 run 就顯得不是那麼聰明，而且如果 QA 不在身邊的話，難道我只能利用 TestFlight 或是其他工具在 build 給他嗎？ 這長期下來消耗的時間也是很可觀的。 <p></p>
-<p>所以，我們可以利用 Deep link 的方式選擇自己想要 API ，只要文字夠複雜的話，就不用擔心使用者誤進了，之後就省下為了換 dev 或 production 而來煩你的時間了！</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong> 在開發 iOS 的時候，時常會需要測試 dev 及 production 的 API，每次更換 API 就要重新 run 就顯得不是那麼聰明，而且如果 QA 不在身邊的話，難道我只能利用 TestFlight 或是其他工具在 build 給他嗎？ 這長期下來消耗的時間也是很可觀的。 </strong></p>
+<p><strong>所以，我們可以利用 Deep link 的方式選擇自己想要 API ，只要文字夠複雜的話，就不用擔心使用者誤進了，之後就省下為了換 dev 或 production 而來煩你的時間了！ </strong></p>
 <p><br><br></p>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="comment">// MARK: - Deeplink</span></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">AppDelegate</span></span>&#123;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">func</span> <span class="title">application</span><span class="params">(<span class="number">_</span> app: UIApplication, <span class="keyword">open</span> url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:])</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">    parseDeepLink(url: url)</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">func</span> <span class="title">application</span><span class="params">(<span class="number">_</span> application: UIApplication, <span class="keyword">continue</span> userActivity: NSUserActivity, restorationHandler: @escaping <span class="params">([Any]?)</span></span></span> -&gt; <span class="type">Void</span>) -&gt; <span class="type">Bool</span> &#123;</div><div class="line">    <span class="keyword">if</span> userActivity.activityType == <span class="type">NSUserActivityTypeBrowsingWeb</span> &#123;</div><div class="line">      <span class="keyword">if</span> <span class="keyword">let</span> url = userActivity.webpageURL &#123;</div><div class="line">        parseDeepLink(url: url)</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">func</span> <span class="title">parseDeepLink</span><span class="params">(url: URL)</span></span> &#123;</div><div class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> components = <span class="type">URLComponents</span>(url: url, resolvingAgainstBaseURL: <span class="literal">true</span>), <span class="keyword">let</span> host = components.host <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> pathComponents = components.path.components(separatedBy: <span class="string">"/"</span>)</div><div class="line">    </div><div class="line">    pathComponents.removeFirst()</div><div class="line">    </div><div class="line">    <span class="keyword">switch</span> host &#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">"dev"</span>:</div><div class="line">      <span class="type">UserDefaults</span>.standard.<span class="keyword">set</span>(<span class="literal">true</span>, forKey: <span class="string">"isDevMode"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="string">"production"</span>:</div><div class="line">      <span class="type">UserDefaults</span>.standard.<span class="keyword">set</span>(<span class="literal">false</span>, forKey: <span class="string">"isDevMode"</span>)</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">      <span class="keyword">break</span></div><div class="line">    &#125;</div><div class="line">    <span class="type">UserDefaults</span>.standard.synchronize()</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><br><br></p>
 <h2 id="info-plist"><a href="#info-plist" class="headerlink" title="info.plist"></a>info.plist</h2><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">key</span>&gt;</span>CFBundleURLTypes<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">array</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">dict</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">key</span>&gt;</span>CFBundleURLName<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">string</span>&gt;</span>Deeplink<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">key</span>&gt;</span>CFBundleURLSchemes<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">array</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">string</span>&gt;</span>DemoDeeplink<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">array</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">dict</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">array</span>&gt;</span></div></pre></td></tr></table></figure>
 <p><br><br></p>
 <h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><p><img src="https://rocooshiang.github.io/2017/08/23/Deep-link-9/Deeplink.gif" alt="Xcode indent settings"></p>
-</h5>
+
       
     </div>
     
@@ -387,7 +387,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/19/About-FSCalendar/" rel="next" title="About FSCalendar">
+              <a href="/2017/08/23/About-FSCalendar/" rel="next" title="About FSCalendar">
                 <i class="fa fa-chevron-left"></i> About FSCalendar
               </a>
             
@@ -494,7 +494,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
@@ -529,15 +529,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.0.1.</span> <span class="nav-text"> 在開發 iOS 的時候，時常會需要測試 dev 及 production 的 API，每次更換 API 就要重新 run 就顯得不是那麼聰明，而且如果 QA 不在身邊的話，難道我只能利用 TestFlight 或是其他工具在 build 給他嗎？ 這長期下來消耗的時間也是很可觀的。 
-所以，我們可以利用 Deep link 的方式選擇自己想要 API ，只要文字夠複雜的話，就不用擔心使用者誤進了，之後就省下為了換 dev 或 production 而來煩你的時間了！
-
-Code// MARK: - Deeplinkextension AppDelegate{    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {    parseDeepLink(url: url)    return true  }      func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {    if userActivity.activityType == NSUserActivityTypeBrowsingWeb {      if let url = userActivity.webpageURL {        parseDeepLink(url: url)      }    }    return true  }    func parseDeepLink(url: URL) {    guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true), let host = components.host else {      return    }        var pathComponents = components.path.components(separatedBy: "/")        pathComponents.removeFirst()        switch host {    case "dev":      UserDefaults.standard.set(true, forKey: "isDevMode")    case "production":      UserDefaults.standard.set(false, forKey: "isDevMode")    default:      break    }    UserDefaults.standard.synchronize()  }}
-
-info.plist<key>CFBundleURLTypes</key><array>	<dict>		<key>CFBundleURLName</key>		<string>Deeplink</string>		<key>CFBundleURLSchemes</key>		<array>		<string>DemoDeeplink</string>		</array>	</dict></array>
-
-使用方式
-</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">2.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#info-plist"><span class="nav-number">3.</span> <span class="nav-text">info.plist</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方式"><span class="nav-number">4.</span> <span class="nav-text">使用方式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">2.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#info-plist"><span class="nav-number">3.</span> <span class="nav-text">info.plist</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方式"><span class="nav-number">4.</span> <span class="nav-text">使用方式</span></a></li></ol></div>
             
 
           </div>
