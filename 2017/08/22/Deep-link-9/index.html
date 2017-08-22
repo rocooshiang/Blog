@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Swift,iOS," />
 
 
 
@@ -94,12 +94,19 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Rocoo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="前言 在開發 iOS 的時候，時常會需要測試 dev 及 production 的 API，每次更換 API 就要重新 run 就顯得不是那麼聰明，而且如果 QA 不在身邊的話，難道我只能利用 TestFlight 或是其他工具在 build 給他嗎？ 這長期下來消耗的時間也是很可觀的。  所以，我們可以利用 Deep link 的方式選擇自己想要 API ，只要文字夠複雜的話，就不用擔心使用者誤">
+<meta name="keywords" content="Swift,iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep link">
+<meta property="og:url" content="http://yoursite.com/2017/08/22/Deep-link-9/index.html">
 <meta property="og:site_name" content="Rocoo">
+<meta property="og:description" content="前言 在開發 iOS 的時候，時常會需要測試 dev 及 production 的 API，每次更換 API 就要重新 run 就顯得不是那麼聰明，而且如果 QA 不在身邊的話，難道我只能利用 TestFlight 或是其他工具在 build 給他嗎？ 這長期下來消耗的時間也是很可觀的。  所以，我們可以利用 Deep link 的方式選擇自己想要 API ，只要文字夠複雜的話，就不用擔心使用者誤">
+<meta property="og:image" content="http://yoursite.com/2017/08/22/Deep-link-9/images/Deeplink.gif">
+<meta property="og:updated_time" content="2017-08-22T15:58:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rocoo">
+<meta name="twitter:title" content="Deep link">
+<meta name="twitter:description" content="前言 在開發 iOS 的時候，時常會需要測試 dev 及 production 的 API，每次更換 API 就要重新 run 就顯得不是那麼聰明，而且如果 QA 不在身邊的話，難道我只能利用 TestFlight 或是其他工具在 build 給他嗎？ 這長期下來消耗的時間也是很可觀的。  所以，我們可以利用 Deep link 的方式選擇自己想要 API ，只要文字夠複雜的話，就不用擔心使用者誤">
+<meta name="twitter:image" content="http://yoursite.com/2017/08/22/Deep-link-9/images/Deeplink.gif">
 
 
 
@@ -128,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/22/Deep-link-9/"/>
 
 
 
 
 
-  <title>Rocoo</title>
+  <title>Deep link | Rocoo</title>
   
 
 
@@ -153,9 +160,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -238,9 +243,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -270,9 +275,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/22/Deep-link-9/" itemprop="url">Deep link</a></h1>
+          <h1 class="post-title" itemprop="name headline">Deep link</h1>
         
 
         <div class="post-meta">
@@ -344,9 +347,7 @@
       
 
       
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p></p><h5> 在開發 iOS 的時候，時常會需要測試 dev 及 production 的 API，每次更換 API 就要重新 run 就顯得不是那麼聰明，而且如果 QA 不在身邊的話，難道我只能利用 TestFlight 或是其他工具在 build 給他嗎？ 這長期下來消耗的時間也是很可觀的。 <p></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p></p><h5> 在開發 iOS 的時候，時常會需要測試 dev 及 production 的 API，每次更換 API 就要重新 run 就顯得不是那麼聰明，而且如果 QA 不在身邊的話，難道我只能利用 TestFlight 或是其他工具在 build 給他嗎？ 這長期下來消耗的時間也是很可觀的。 <p></p>
 <p>所以，我們可以利用 Deep link 的方式選擇自己想要 API ，只要文字夠複雜的話，就不用擔心使用者誤進了，之後就省下為了換 dev 或 production 而來煩你的時間了！</p>
 <p><br><br></p>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="comment">// MARK: - Deeplink</span></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">AppDelegate</span></span>&#123;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">func</span> <span class="title">application</span><span class="params">(<span class="number">_</span> app: UIApplication, <span class="keyword">open</span> url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:])</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">    parseDeepLink(url: url)</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">func</span> <span class="title">application</span><span class="params">(<span class="number">_</span> application: UIApplication, <span class="keyword">continue</span> userActivity: NSUserActivity, restorationHandler: @escaping <span class="params">([Any]?)</span></span></span> -&gt; <span class="type">Void</span>) -&gt; <span class="type">Bool</span> &#123;</div><div class="line">    <span class="keyword">if</span> userActivity.activityType == <span class="type">NSUserActivityTypeBrowsingWeb</span> &#123;</div><div class="line">      <span class="keyword">if</span> <span class="keyword">let</span> url = userActivity.webpageURL &#123;</div><div class="line">        parseDeepLink(url: url)</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">func</span> <span class="title">parseDeepLink</span><span class="params">(url: URL)</span></span> &#123;</div><div class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> components = <span class="type">URLComponents</span>(url: url, resolvingAgainstBaseURL: <span class="literal">true</span>), <span class="keyword">let</span> host = components.host <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> pathComponents = components.path.components(separatedBy: <span class="string">"/"</span>)</div><div class="line">    </div><div class="line">    pathComponents.removeFirst()</div><div class="line">    </div><div class="line">    <span class="keyword">switch</span> host &#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">"dev"</span>:</div><div class="line">      <span class="type">UserDefaults</span>.standard.<span class="keyword">set</span>(<span class="literal">true</span>, forKey: <span class="string">"isDevMode"</span>)</div><div class="line">    <span class="keyword">case</span> <span class="string">"production"</span>:</div><div class="line">      <span class="type">UserDefaults</span>.standard.<span class="keyword">set</span>(<span class="literal">false</span>, forKey: <span class="string">"isDevMode"</span>)</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">      <span class="keyword">break</span></div><div class="line">    &#125;</div><div class="line">    <span class="type">UserDefaults</span>.standard.synchronize()</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -355,8 +356,6 @@
 <p><br><br></p>
 <h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><p><img src="images/Deeplink.gif" alt="Alt Text"></p>
 </h5>
-          
-        
       
     </div>
     
@@ -371,180 +370,38 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/About-FSCalendar/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Rocoo Chuang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/me.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rocoo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/19/About-FSCalendar/" itemprop="url">About FSCalendar</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-08-19T01:58:46+08:00">
-                2017-08-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mobile/" itemprop="url" rel="index">
-                    <span itemprop="name">Mobile</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/Swift/" rel="tag"># Swift</a>
           
-
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p><strong><a href="https://github.com/WenchaoD/FSCalendar" target="_blank" rel="external">FSCalendar</a>  是一個在日曆上蠻強大的第三方套件，用 Cocoapod 就能輕鬆安裝，官方也有一些基本的教學，例如： <a href="http://www.jianshu.com/nb/4276521" target="_blank" rel="external">简书</a>、<a href="https://github.com/WenchaoD/FSCalendar/blob/master/MOREUSAGE.md" target="_blank" rel="external">More usage</a>、<a href="http://cocoadocs.org/docsets/FSCalendar/2.7.9/" target="_blank" rel="external">Document</a>。</strong></p>
-<p><strong>不過還是有些細節的東西未被摘入，本篇單純紀錄一些自己蠻常用的功能。</strong></p>
-</blockquote>
-<p><br></p>
-<h2 id="calendar"><a href="#calendar" class="headerlink" title="calendar"></a>calendar</h2><p><strong> 語言環境</strong><br><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">calendar.locale = <span class="type">Locale</span>(identifier: <span class="string">"en-US"</span>)</div></pre></td></tr></table></figure></p>
-<p><br></p>
-<p><strong> header background</strong><br><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">calendar.calendarHeaderView.backgroundColor = .green</div></pre></td></tr></table></figure></p>
-<p><br><br><strong> 顯示的日期</strong><br><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">calendar.placeholderType = .<span class="keyword">none</span> </div><div class="line">calendar.placeholderType = .fillSixRows </div><div class="line">calendar.placeholderType = .fillHeadTail</div></pre></td></tr></table></figure></p>
-<p><br><br><br></p>
-<h2 id="calendar-appearance"><a href="#calendar-appearance" class="headerlink" title="calendar.appearance"></a>calendar.appearance</h2><p><strong> header 日期格式</strong><br><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">calendar.appearance.headerDateFormat =  <span class="string">"yyyy-MM"</span></div></pre></td></tr></table></figure></p>
-<p><br></p>
-<p><strong>隱藏在 header 左右兩旁的上下個月</strong><br><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">calendar.appearance..headerMinimumDissolvedAlpha =  <span class="number">0.0</span></div></pre></td></tr></table></figure></p>
-<p><br></p>
-<p><strong> weekday、header 大小寫</strong><br><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line">calendar.appearance.caseOptions = [.weekdayUsesUpperCase, .weekdayUsesSingleUpperCase, .headerUsesUpperCase]</div></pre></td></tr></table></figure></p>
-<p> <br></p>
-<p><strong> 讓我花最多時間的是日期下方的 image 及點擊日期所產生的 shapeLayer。image 會因為圖片原始大小而變大，但是我找不到 contentInset 可以設定，目前採用的做法是用程式碼改變圖片大小（但是解析度會有些影響）。</strong><br>  <figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">resizeImage</span><span class="params">(targetSize: CGSize)</span></span> -&gt; <span class="type">UIImage</span> &#123;</div><div class="line">    <span class="keyword">let</span> size = <span class="keyword">self</span>.size</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> widthRatio  = targetSize.width  / size.width</div><div class="line">    <span class="keyword">let</span> heightRatio = targetSize.height / size.height</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> newSize: <span class="type">CGSize</span></div><div class="line">    <span class="keyword">if</span>(widthRatio &gt; heightRatio) &#123;</div><div class="line">      newSize = <span class="type">CGSize</span>(width: size.width * heightRatio, height: size.height * heightRatio)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      newSize = <span class="type">CGSize</span>(width: size.width * widthRatio,  height: size.height * widthRatio)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> rect = <span class="type">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: newSize.width, height: newSize.height)</div><div class="line">    </div><div class="line">    <span class="type">UIGraphicsBeginImageContextWithOptions</span>(newSize, <span class="literal">false</span>, <span class="type">UIScreen</span>.main.scale)</div><div class="line">    <span class="keyword">self</span>.draw(<span class="keyword">in</span>: rect)</div><div class="line">    <span class="keyword">let</span> newImage = <span class="type">UIGraphicsGetImageFromCurrentImageContext</span>()</div><div class="line">    <span class="type">UIGraphicsEndImageContext</span>()</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> newImage!</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
-<p>  <br><br><strong>  而 shapeLayer 其實可以在 FSCalendarCell 取得這個屬性，如下：</strong></p>
-  <figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="keyword">let</span> cell = calendar.cell(<span class="keyword">for</span>: <span class="type">Date</span>(), at: .current)</div><div class="line">cell.shapeLayer...</div></pre></td></tr></table></figure>
-<p>  <br><br><strong> 但是這樣的做法我遇到兩個狀況沒辦法控制 shapeLayer 的大小，而這兩個狀況指向同一個原因，就是利用 date 取不到對應的 cell ，目前有開這條 issue ，但是作者還沒有回應，後來就乾脆動手改原始碼，在 calendar 新增一個 isHalfShape 的屬性，然後在 shapeLayer 設定 frame 的地方作出相應的處理，如：</strong></p>
-  <figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span>([_calendar isHalfShape])&#123;</div><div class="line">      _shapeLayer.frame = <span class="type">CGRectMake</span>((<span class="keyword">self</span>.bounds.size.width-diameter)/<span class="number">2</span> + (diameter / <span class="number">2</span> / <span class="number">2</span>),</div><div class="line">                                 (titleHeight-diameter)/<span class="number">2</span> + (diameter / <span class="number">2</span> / <span class="number">2</span>),</div><div class="line">                                 diameter / <span class="number">2</span>,</div><div class="line">                                 diameter / <span class="number">2</span>);</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">     <span class="comment">// Original</span></div><div class="line">     _shapeLayer.frame = <span class="type">CGRectMake</span>((<span class="keyword">self</span>.bounds.size.width-diameter)/<span class="number">2</span>,</div><div class="line">                                 (titleHeight-diameter)/<span class="number">2</span>,diameter, diameter);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong> 詳情請點 <a href="https://github.com/rocooshiang/FSCalendar/tree/master/FSCalendar" target="_blank" rel="external">這裡！！</a></strong></p>
-<p>  <br><br>  <br></p>
-<h2 id="LICENSE"><a href="#LICENSE" class="headerlink" title="LICENSE"></a>LICENSE</h2><p><strong> 寫到這其實讓我最不安的就是不知道 MIT LICENSE 能不能允許我發布這類的筆記文章，稍微去<a href="http://inspiregate.com/internet/trends/74-comparison-of-five-kinds-of-standard-open-source-license-bsd-apache-gpl-lgpl-mit.html" target="_blank" rel="external">爬了文</a>看到了這段「你的發行版裡包含原許可協議的聲明」，所以在此附上原作者的 LICENSE：</strong><br><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="type">Copyright</span> (<span class="built_in">c</span>) <span class="number">2013</span>-<span class="number">2016</span> <span class="type">FSCalendar</span> (https:<span class="comment">//github.com/WenchaoD/FSCalendar)</span></div><div class="line"></div><div class="line"><span class="type">Permission</span> <span class="keyword">is</span> hereby granted, free of charge, to any person obtaining a copy</div><div class="line">of this software and associated documentation files (the <span class="string">"Software"</span>), to deal</div><div class="line"><span class="keyword">in</span> the <span class="type">Software</span> without restriction, including without limitation the rights</div><div class="line">to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</div><div class="line">copies of the <span class="type">Software</span>, and to permit persons to whom the <span class="type">Software</span> <span class="keyword">is</span></div><div class="line">furnished to <span class="keyword">do</span> so, subject to the following conditions:</div><div class="line"></div><div class="line"><span class="type">The</span> above copyright notice and this permission notice shall be included <span class="keyword">in</span></div><div class="line">all copies or substantial portions of the <span class="type">Software</span>.</div><div class="line"></div><div class="line"><span class="type">THE</span> <span class="type">SOFTWARE</span> <span class="type">IS</span> <span class="type">PROVIDED</span> <span class="string">"AS IS"</span>, <span class="type">WITHOUT</span> <span class="type">WARRANTY</span> <span class="type">OF</span> <span class="type">ANY</span> <span class="type">KIND</span>, <span class="type">EXPRESS</span> <span class="type">OR</span></div><div class="line"><span class="type">IMPLIED</span>, <span class="type">INCLUDING</span> <span class="type">BUT</span> <span class="type">NOT</span> <span class="type">LIMITED</span> <span class="type">TO</span> <span class="type">THE</span> <span class="type">WARRANTIES</span> <span class="type">OF</span> <span class="type">MERCHANTABILITY</span>,</div><div class="line"><span class="type">FITNESS</span> <span class="type">FOR</span> <span class="type">A</span> <span class="type">PARTICULAR</span> <span class="type">PURPOSE</span> <span class="type">AND</span> <span class="type">NONINFRINGEMENT</span>. <span class="type">IN</span> <span class="type">NO</span> <span class="type">EVENT</span> <span class="type">SHALL</span> <span class="type">THE</span></div><div class="line"><span class="type">AUTHORS</span> <span class="type">OR</span> <span class="type">COPYRIGHT</span> <span class="type">HOLDERS</span> <span class="type">BE</span> <span class="type">LIABLE</span> <span class="type">FOR</span> <span class="type">ANY</span> <span class="type">CLAIM</span>, <span class="type">DAMAGES</span> <span class="type">OR</span> <span class="type">OTHER</span></div><div class="line"><span class="type">LIABILITY</span>, <span class="type">WHETHER</span> <span class="type">IN</span> <span class="type">AN</span> <span class="type">ACTION</span> <span class="type">OF</span> <span class="type">CONTRACT</span>, <span class="type">TORT</span> <span class="type">OR</span> <span class="type">OTHERWISE</span>, <span class="type">ARISING</span> <span class="type">FROM</span>,</div><div class="line"><span class="type">OUT</span> <span class="type">OF</span> <span class="type">OR</span> <span class="type">IN</span> <span class="type">CONNECTION</span> <span class="type">WITH</span> <span class="type">THE</span> <span class="type">SOFTWARE</span> <span class="type">OR</span> <span class="type">THE</span> <span class="type">USE</span> <span class="type">OR</span> <span class="type">OTHER</span> <span class="type">DEALINGS</span> <span class="type">IN</span></div><div class="line"><span class="type">THE</span> <span class="type">SOFTWARE</span>.</div></pre></td></tr></table></figure></p>
-<p><br></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/19/About-FSCalendar/" rel="next" title="About FSCalendar">
+                <i class="fa fa-chevron-left"></i> About FSCalendar
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -554,10 +411,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -565,6 +423,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -585,8 +447,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/me.jpg"
@@ -648,6 +519,30 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.0.1.</span> <span class="nav-text"> 在開發 iOS 的時候，時常會需要測試 dev 及 production 的 API，每次更換 API 就要重新 run 就顯得不是那麼聰明，而且如果 QA 不在身邊的話，難道我只能利用 TestFlight 或是其他工具在 build 給他嗎？ 這長期下來消耗的時間也是很可觀的。 
+所以，我們可以利用 Deep link 的方式選擇自己想要 API ，只要文字夠複雜的話，就不用擔心使用者誤進了，之後就省下為了換 dev 或 production 而來煩你的時間了！
+
+Code// MARK: - Deeplinkextension AppDelegate{    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {    parseDeepLink(url: url)    return true  }      func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {    if userActivity.activityType == NSUserActivityTypeBrowsingWeb {      if let url = userActivity.webpageURL {        parseDeepLink(url: url)      }    }    return true  }    func parseDeepLink(url: URL) {    guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true), let host = components.host else {      return    }        var pathComponents = components.path.components(separatedBy: "/")        pathComponents.removeFirst()        switch host {    case "dev":      UserDefaults.standard.set(true, forKey: "isDevMode")    case "production":      UserDefaults.standard.set(false, forKey: "isDevMode")    default:      break    }    UserDefaults.standard.synchronize()  }}
+
+info.plist<key>CFBundleURLTypes</key>	<array>		<dict>			<key>CFBundleURLName</key>			<string>Deeplink</string>			<key>CFBundleURLSchemes</key>			<array>				<string>DemoDeeplink</string>			</array>		</dict>	</array>
+
+使用方式
+</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">2.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#info-plist"><span class="nav-number">3.</span> <span class="nav-text">info.plist</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方式"><span class="nav-number">4.</span> <span class="nav-text">使用方式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -771,10 +666,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
